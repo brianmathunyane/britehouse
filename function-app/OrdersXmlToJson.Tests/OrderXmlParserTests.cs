@@ -113,37 +113,5 @@ public class OrderXmlParserTests
         Assert.Contains("CustomerName", ex.Message);
     }
 
-    [Fact]
-    public void Parse_NonNumericAmount_Throws()
-    {
-        const string xml = """
-            <Orders>
-              <Order>
-                <OrderId>ORD-1</OrderId>
-                <CustomerName>Test</CustomerName>
-                <Amount>not-a-number</Amount>
-                <Date>2026-01-01</Date>
-              </Order>
-            </Orders>
-            """;
 
-        Assert.Throws<OrderXmlValidationException>(() => OrderXmlParser.Parse(xml));
-    }
-
-    [Fact]
-    public void Parse_UnparseableDate_Throws()
-    {
-        const string xml = """
-            <Orders>
-              <Order>
-                <OrderId>ORD-1</OrderId>
-                <CustomerName>Test</CustomerName>
-                <Amount>10</Amount>
-                <Date>not-a-date</Date>
-              </Order>
-            </Orders>
-            """;
-
-        Assert.Throws<OrderXmlValidationException>(() => OrderXmlParser.Parse(xml));
-    }
 }

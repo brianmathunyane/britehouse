@@ -1,7 +1,6 @@
 # OrdersXmlToJson Function App
 
-Azure Function App (.NET 8, isolated worker model) for the Britehouse technical
-assessment. Accepts an XML payload of orders and returns the equivalent JSON array.
+Azure Function App (.NET 8, isolated worker model). Accepts an XML payload of orders and returns the equivalent JSON array.
 
 ## Endpoint
 
@@ -38,8 +37,6 @@ OrdersXmlToJson/            Function app project
 OrdersXmlToJson.Tests/      xUnit tests for OrderXmlParser (no Functions host required)
 ```
 
-The parsing logic is deliberately kept out of the Function class and free of any
-`Microsoft.Azure.Functions.Worker` dependency, so it can be unit tested directly.
 
 ## Run locally
 
@@ -64,14 +61,3 @@ curl -X POST http://localhost:7071/api/orders \
 dotnet test OrdersXmlToJson.Tests/OrdersXmlToJson.Tests.csproj
 ```
 
-## Deploy
-
-Deployment is via the Terraform in [`../infra`](../infra) (creates the Function App,
-its required Storage Account, and App Service Plan) followed by a code deploy, e.g.:
-
-```bash
-cd OrdersXmlToJson
-func azure functionapp publish <function-app-name>
-```
-
-See the repo root README for the full end-to-end deployment sequence.

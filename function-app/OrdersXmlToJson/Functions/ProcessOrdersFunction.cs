@@ -16,8 +16,8 @@ public class ProcessOrdersFunction
     }
 
     /// <summary>
-    /// Accepts an XML payload containing one or more &lt;Order&gt; elements (wrapped in an
-    /// &lt;Orders&gt; root, as sent by the assessment's Logic App) and returns them as a JSON array.
+    /// Accepts an XML payload containing one or more Order elements (wrapped in an
+    /// Orders root, as sent by the  Logic App) and returns them as a JSON array.
     /// </summary>
     [Function("ProcessOrders")]
     public async Task<HttpResponseData> Run(
@@ -42,9 +42,6 @@ public class ProcessOrdersFunction
         {
             _logger.LogWarning(ex, "Rejected invalid XML payload.");
 
-            // WriteAsJsonAsync(value) with no status code argument always resets the
-            // response to 200, overriding whatever was set beforehand — the status
-            // code must be passed into this overload directly.
             var badRequest = req.CreateResponse();
             await badRequest.WriteAsJsonAsync(new { error = ex.Message }, HttpStatusCode.BadRequest);
             return badRequest;
