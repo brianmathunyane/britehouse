@@ -34,15 +34,19 @@ public class ProcessOrdersFunction
             var orders = OrderXmlParser.Parse(xmlBody);
             _logger.LogInformation("Parsed {Count} order(s) from XML payload.", orders.Count);
 
-            var response = req.CreateResponse(HttpStatusCode.OK);
-            await response.WriteAsJsonAsync(orders);
+            var response = req.CreateResponse();
+            await response.WriteAsJsonAsync(orders, HttpStatusCode.OK);
             return response;
         }
         catch (OrderXmlValidationException ex)
         {
             _logger.LogWarning(ex, "Rejected invalid XML payload.");
-            var badRequest = req.CreateResponse(HttpStatusCode.BadRequest);
-            await badRequest.WriteAsJsonAsync(new { error = ex.Message });
+
+            // WriteAsJsonAsync(value) with no status code argument always resets the
+            // response to 200, overriding whatever was set beforehand — the status
+            // code must be passed into this overload directly.
+            var badRequest = req.CreateResponse();
+            await badRequest.WriteAsJsonAsync(new { error = ex.Message }, HttpStatusCode.BadRequest);
             return badRequest;
         }
     }
