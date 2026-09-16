@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Orders>
+  <Order>
+    <OrderId>ORD-001</OrderId>
+    <CustomerName>Jane Dlamini</CustomerName>
+    <Amount>149.99</Amount>
+    <Date>2026-09-10T00:00:00Z</Date>
+  </Order>
+  <Order>
+    <OrderId>ORD-002</OrderId>
+    <CustomerName>Sipho Nkosi</CustomerName>
+    <Amount>75.50</Amount>
+    <Date>2026-09-11T00:00:00Z</Date>
+  </Order>
+  <Order>
+    <OrderId>ORD-003</OrderId>
+    <CustomerName>Lerato Mokoena</CustomerName>
+    <Amount>320.00</Amount>
+    <Date>2026-09-12T00:00:00Z</Date>
+  </Order>
+</Orders>

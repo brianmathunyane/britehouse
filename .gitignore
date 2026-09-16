@@ -1,0 +1,27 @@
+# .NET
+bin/
+obj/
+*.user
+
+# Azure Functions
+local.settings.json
+.azure/
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+# Note: .terraform.lock.hcl is intentionally NOT ignored — commit it for reproducible providers.
+
+# OS / editor
+.vs/
+.vscode/
+.DS_Store
+Thumbs.db

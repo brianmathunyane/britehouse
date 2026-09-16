@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="OrdersXmlToJson.Tests/OrdersXmlToJson.Tests.csproj" />
+  <Project Path="OrdersXmlToJson/OrdersXmlToJson.csproj" />
+</Solution>
